@@ -16,9 +16,17 @@ public class Start extends ActivityCommand {
         this.to = to;
     }
 
+    public Start(@NonNull Class<?> to,
+                 @NonNull ActivityCommand command) {
+        super(command);
+        this.to = to;
+    }
+
     @Override
-    public void apply(@NonNull Activity activity) {
-        Intent intent = new Intent(activity, to);
-        activity.startActivity(intent);
+    public void apply(@NonNull Activity activity,
+                      @NonNull Intent intent) {
+        Intent startIntent = new Intent(activity, to);
+        if (wrappedCommand != null) wrappedCommand.apply(activity, startIntent);
+        activity.startActivity(startIntent);
     }
 }

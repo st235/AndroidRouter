@@ -26,6 +26,6 @@ public class ActivitySatellite implements Satellite {
     public void execute(@NonNull Command command) {
         Activity activity = activityReference.get();
         if (activity == null) return;
-        ((ActivityCommand) command).apply(activity);
+        ((ActivityCommand) command).apply(activity, null);
     }
 }

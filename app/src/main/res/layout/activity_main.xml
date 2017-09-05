@@ -13,11 +13,16 @@
         android:layout_height="wrap_content"
         android:text="Next"/>
 
-
     <Button
         android:id="@+id/nextAndFinish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next and finish"/>
+
+    <Button
+        android:id="@+id/nextWithArgs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next with args"/>
 
 </LinearLayout>

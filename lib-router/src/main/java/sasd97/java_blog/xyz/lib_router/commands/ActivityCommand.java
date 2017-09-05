@@ -21,5 +21,6 @@ public abstract class ActivityCommand implements Command {
         this.wrappedCommand = command;
     }
 
-    public abstract void apply(@NonNull Activity activity);
+    public abstract void apply(@NonNull Activity activity,
+                               @NonNull Intent intent);
 }

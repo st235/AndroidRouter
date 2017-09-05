@@ -10,6 +10,7 @@ import sasd97.java_blog.xyz.lib_router.Router;
 import sasd97.java_blog.xyz.lib_router.commands.And;
 import sasd97.java_blog.xyz.lib_router.commands.FinishThis;
 import sasd97.java_blog.xyz.lib_router.commands.Start;
+import sasd97.java_blog.xyz.lib_router.commands.With;
 import sasd97.java_blog.xyz.lib_router.satellites.ActivitySatellite;
 import sasd97.java_blog.xyz.lib_router.satellites.Satellite;
 
@@ -36,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 router.pushCommand(new FinishThis(new And(new Start(SecondaryActivity.class))));
+            }
+        });
+
+        findViewById(R.id.nextWithArgs).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle args = new Bundle();
+                args.putInt("args", 1);
+                router.pushCommand(new Start(SecondaryActivity.class, new With(args)));
             }
         });
     }
