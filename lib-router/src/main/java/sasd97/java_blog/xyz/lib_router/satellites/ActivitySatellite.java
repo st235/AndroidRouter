@@ -3,9 +3,11 @@ package sasd97.java_blog.xyz.lib_router.satellites;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
+import sasd97.java_blog.xyz.lib_router.commands.ActivityCommand;
 import sasd97.java_blog.xyz.lib_router.commands.Command;
 
 /**
@@ -23,8 +25,7 @@ public class ActivitySatellite implements Satellite {
     @Override
     public void execute(@NonNull Command command) {
         Activity activity = activityReference.get();
-        if (activity != null) return;
-
-
+        if (activity == null) return;
+        ((ActivityCommand) command).apply(activity);
     }
 }

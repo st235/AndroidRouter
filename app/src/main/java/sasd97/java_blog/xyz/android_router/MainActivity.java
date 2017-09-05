@@ -2,6 +2,7 @@ package sasd97.java_blog.xyz.android_router;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import sasd97.java_blog.xyz.lib_router.BaseRouter;

@@ -18,6 +18,7 @@ public class Start extends ActivityCommand {
 
     @Override
     public void apply(@NonNull Activity activity) {
-        new Intent(activity, to);
+        Intent intent = new Intent(activity, to);
+        activity.startActivity(intent);
     }
 }

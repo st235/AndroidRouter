@@ -15,7 +15,7 @@ public class BaseRouter implements Router {
 
     @Override
     public void pushCommand(@NonNull Command command) {
-
+        satellite.execute(command);
     }
 
     @Override
