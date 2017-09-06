@@ -1,8 +1,23 @@
 # Android Router
 
+ [ ![Download](https://api.bintray.com/packages/st235/android-router/android-router/images/download.svg?version=0.0.2) ](https://bintray.com/st235/android-router/android-router/0.0.2/link)
+
 ## Installation
 
-Coming soon...
+### Gradle
+```
+compile 'com.github.sasd97:android-router:0.0.2'
+```
+
+### Maven
+```
+<dependency>
+  <groupId>com.github.sasd97</groupId>
+  <artifactId>android-router</artifactId>
+  <version>0.0.2</version>
+  <type>pom</type>
+</dependency>
+```
 
 ## Concepts
 
