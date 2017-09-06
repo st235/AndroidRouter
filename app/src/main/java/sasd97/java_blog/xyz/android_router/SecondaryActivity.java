@@ -2,20 +2,63 @@ package sasd97.java_blog.xyz.android_router;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import sasd97.java_blog.xyz.lib_router.BaseRouter;
+import sasd97.java_blog.xyz.lib_router.Router;
+import sasd97.java_blog.xyz.lib_router.commands.fragments.AddToBackStack;
+import sasd97.java_blog.xyz.lib_router.commands.fragments.And;
+import sasd97.java_blog.xyz.lib_router.commands.fragments.Replace;
+import sasd97.java_blog.xyz.lib_router.satellites.FragmentSatellite;
+import sasd97.java_blog.xyz.lib_router.satellites.Satellite;
+
 public class SecondaryActivity extends AppCompatActivity {
+
+    private Router router = new BaseRouter();
+    private Satellite satellite = new FragmentSatellite(R.id.fragmentContainer, getSupportFragmentManager());
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    router.pushCommand(
+                            new Replace(new FirstFragment(), null, new And(new AddToBackStack(null)))
+                    );
+                    return true;
+                case R.id.navigation_dashboard:
+                    router.pushCommand(
+                            new Replace(new SecondFragment(), "tag")
+                    );
+                    return true;
+                case R.id.navigation_notifications:
+                    router.pushCommand(
+                            new Replace(new ThirdFragment(), null, new AddToBackStack(null))
+                    );
+                    return true;
+            }
+            return false;
+        }
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secondary);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        router.attachSatellite(satellite);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Intent intent = getIntent();
         Bundle args = intent.getExtras();
@@ -24,5 +67,4 @@ public class SecondaryActivity extends AppCompatActivity {
             Toast.makeText(this, String.valueOf(args.getInt("args")), Toast.LENGTH_LONG).show();
         }
     }
-
 }
