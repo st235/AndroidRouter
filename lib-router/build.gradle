@@ -1,5 +1,11 @@
 apply plugin: 'com.android.library'
 
+ext {
+    PUBLISH_GROUP_ID = 'com.github.sasd97'
+    PUBLISH_ARTIFACT_ID = 'android-router'
+    PUBLISH_VERSION = '0.0.2'
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -7,8 +13,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
-        versionName "0.0.1"
+        versionCode 10
+        versionName "0.0.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -23,9 +29,13 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'com.android.support:appcompat-v7:26.0.2'
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.0.2'
     testCompile 'junit:junit:4.12'
 }
+
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'

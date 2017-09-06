@@ -74,8 +74,13 @@ To add command you need to inherit new one from command group.
 
 _Example:_
 ```java
-    public final class Start extends ActivityCommand
-    public class Replace extends FragmentCommand
+    public final class Start extends ActivityCommand {
+        ...
+    }
+    
+    public class Replace extends FragmentCommand {
+        ...
+    }
 ```
 
 If you need more complex functionality to manipulate command stack 
@@ -85,7 +90,9 @@ you can create your own __satellite__
 To add satellite you need to implement satellite interface
 
 ```java
-public final class ActivitySatellite implements Satellite
+public final class ActivitySatellite implements Satellite {
+    ...
+}
 ```
 
 Satellite interface
@@ -103,7 +110,9 @@ And the last one opportunity to add misc functions to **router** is to write you
  To add router you need to implement router interface
  
 ```java
-public class BaseRouter implements Router
+public class BaseRouter implements Router {
+    ...
+}
 ```
  
  Router interface

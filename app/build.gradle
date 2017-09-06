@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "sasd97.java_blog.xyz.android_router"
+        applicationId "com.github.sasd97.android_router"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1

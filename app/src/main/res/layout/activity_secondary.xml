@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="sasd97.java_blog.xyz.android_router.SecondaryActivity">
+    tools:context="com.github.sasd97.android_router.SecondaryActivity">
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
