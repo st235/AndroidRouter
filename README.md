@@ -2,7 +2,12 @@
 
 ## Installation
 
+Coming soon...
+
 ## Concepts
+
+We realized that Android-framework needs its own routing system, but there is
+ no unified solution or any unified concepts. 
 
 ## How to use
 
@@ -29,7 +34,7 @@ First of all, you need to attach **satellite** to **router**.
 - StartForResult
 - Finish
 - With
-- And _(Sugar)_
+- And _(Sugar :candy:)_
 
 ```java
 router.pushCommand(new Start(SecondaryActivity.class));
@@ -48,7 +53,7 @@ router.pushCommand(new Start(SecondaryActivity.class, new With(args)));
 
 ### Available fragments commands
 - AddToBackStack
-- And _(Sugar)_
+- And _(Sugar :candy:)_
 - Replace
 
 ```java
