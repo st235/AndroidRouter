@@ -12,12 +12,20 @@ public final class With extends ProviderCommand<Bundle> {
 
     protected Bundle bundle;
 
-    public With(@NonNull Bundle bundle) {
+    private With(@NonNull Bundle bundle) {
         this.bundle = bundle;
     }
 
-    public With(@NonNull ProviderCommand<Bundle> command) {
+    private With(@NonNull ProviderCommand<Bundle> command) {
         super(command);
+    }
+
+    public static With with(@NonNull Bundle bundle) {
+        return new With(bundle);
+    }
+
+    public static With with(@NonNull ProviderCommand<Bundle> command) {
+        return new With(command);
     }
 
     @Override

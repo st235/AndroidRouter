@@ -16,15 +16,25 @@ public final class Start extends ActivityCommand {
     private Class<?> to;
     private ProviderCommand<Bundle> command;
 
-    public Start(@NonNull Class<?> to) {
+    private Start(@NonNull Class<?> to) {
         this.to = to;
     }
 
-    public Start(@NonNull Class<?> to,
-                 @NonNull ProviderCommand<Bundle> command) {
+    private Start(@NonNull Class<?> to,
+                  @NonNull ProviderCommand<Bundle> command) {
         this.to = to;
         this.command = command;
     }
+
+    public static Start start(@NonNull Class<?> to) {
+        return new Start(to);
+    }
+
+    public static Start start(@NonNull Class<?> to,
+                              @NonNull ProviderCommand<Bundle> command) {
+        return new Start(to, command);
+    }
+
 
     @Override
     public void apply(@NonNull Activity activity) {

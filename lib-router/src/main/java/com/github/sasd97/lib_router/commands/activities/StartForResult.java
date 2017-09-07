@@ -18,18 +18,29 @@ public final class StartForResult extends ActivityCommand {
     private int requestCode;
     private ProviderCommand<Bundle> command;
 
-    public StartForResult(@NonNull Class<?> to,
-                          int requestCode) {
+    private StartForResult(@NonNull Class<?> to,
+                           int requestCode) {
         this.to = to;
         this.requestCode = requestCode;
     }
 
-    public StartForResult(@NonNull Class<?> to,
-                          int requestCode,
-                          @NonNull ProviderCommand<Bundle> command) {
+    private StartForResult(@NonNull Class<?> to,
+                           int requestCode,
+                           @NonNull ProviderCommand<Bundle> command) {
         this.to = to;
         this.command = command;
         this.requestCode = requestCode;
+    }
+
+    public static StartForResult startForResult(@NonNull Class<?> to,
+                                                int requestCode) {
+        return new StartForResult(to, requestCode);
+    }
+
+    public static StartForResult startForResult(@NonNull Class<?> to,
+                                                int requestCode,
+                                                @NonNull ProviderCommand<Bundle> command) {
+        return new StartForResult(to, requestCode, command);
     }
 
     @Override

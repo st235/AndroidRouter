@@ -14,19 +14,30 @@ public class Replace extends FragmentCommand {
     private Fragment to;
     private String tag;
 
-    public Replace(@NonNull Fragment to,
-                   @Nullable String tag) {
+    private Replace(@NonNull Fragment to,
+                    @Nullable String tag) {
         super();
         this.to = to;
         this.tag = tag;
     }
 
-    public Replace(@NonNull Fragment to,
-                   @Nullable String tag,
-                   @NonNull FragmentCommand command) {
+    private Replace(@NonNull Fragment to,
+                    @Nullable String tag,
+                    @NonNull FragmentCommand command) {
         super(command);
         this.to = to;
         this.tag = tag;
+    }
+
+    public static Replace replace(@NonNull Fragment to,
+                                  @Nullable String tag) {
+        return new Replace(to, tag);
+    }
+
+    public static Replace replace(@NonNull Fragment to,
+                                  @Nullable String tag,
+                                  @NonNull FragmentCommand command) {
+        return new Replace(to, tag, command);
     }
 
     @Override

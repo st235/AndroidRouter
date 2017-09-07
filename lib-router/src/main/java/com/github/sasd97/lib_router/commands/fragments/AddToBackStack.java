@@ -12,8 +12,12 @@ public class AddToBackStack extends FragmentCommand {
 
     private String tag;
 
-    public AddToBackStack(@Nullable String tag) {
+    private AddToBackStack(@Nullable String tag) {
         this.tag = tag;
+    }
+
+    public static AddToBackStack addToBackStack(@Nullable String tag) {
+        return new AddToBackStack(tag);
     }
 
     @Override

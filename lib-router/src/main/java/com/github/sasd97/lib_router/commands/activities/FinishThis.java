@@ -9,8 +9,12 @@ import android.support.annotation.NonNull;
 
 public final class FinishThis extends ActivityCommand {
 
-    public FinishThis(@NonNull ActivityCommand command) {
+    private FinishThis(@NonNull ActivityCommand command) {
         super(command);
+    }
+
+    public static FinishThis finishThis(@NonNull ActivityCommand command) {
+        return new FinishThis(command);
     }
 
     @Override

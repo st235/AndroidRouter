@@ -11,10 +11,10 @@ import com.github.sasd97.lib_router.commands.CommandDecorator;
 
 public abstract class ActivityCommand extends CommandDecorator<ActivityCommand> {
 
-    public ActivityCommand() {
+    protected ActivityCommand() {
     }
 
-    public ActivityCommand(@NonNull ActivityCommand command) {
+    protected ActivityCommand(@NonNull ActivityCommand command) {
         super(command);
     }
 
