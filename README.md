@@ -76,6 +76,8 @@ router.pushCommand(new Start(SecondaryActivity.class, new With(args)));
 - AddToBackStack
 - And _(Sugar :candy:)_
 - Replace
+- Add
+- WithAnimation
 
 ```java
 router.pushCommand(

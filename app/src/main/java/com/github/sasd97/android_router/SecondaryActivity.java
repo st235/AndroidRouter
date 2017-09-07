@@ -13,6 +13,7 @@ import com.github.sasd97.lib_router.Router;
 import com.github.sasd97.lib_router.commands.fragments.AddToBackStack;
 import com.github.sasd97.lib_router.commands.fragments.And;
 import com.github.sasd97.lib_router.commands.fragments.Replace;
+import com.github.sasd97.lib_router.commands.fragments.WithCustomAnimation;
 import com.github.sasd97.lib_router.satellites.FragmentSatellite;
 import com.github.sasd97.lib_router.satellites.Satellite;
 
@@ -39,7 +40,7 @@ public class SecondaryActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     router.pushCommand(
-                            new Replace(new ThirdFragment(), null, new AddToBackStack(null))
+                            new WithCustomAnimation(R.anim.slide_in, R.anim.slide_out, new Replace(new ThirdFragment(), null))
                     );
                     return true;
             }
