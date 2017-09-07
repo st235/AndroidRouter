@@ -22,7 +22,13 @@ compile 'com.github.sasd97:android-router:0.0.2'
 ## Concepts
 
 We realized that Android-framework needs its own routing system, but there is
- no unified solution or any unified concepts. 
+no unified solution or any unified concepts.So we came up with our design pattern.
+Routing in Android is not an easy thing. It was suggested to divide all entities into
+2 levels of abstraction: depending on the framework (platform **satellites**) and independent entities - **routers**.
+
+Platform-specific entities implement specific functions, such as, 
+system messages handling, showing of dialogs, routing between activities & fragments.
+
 
 ## How to use
 
