@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.github.sasd97.lib_router.commands.Command;
 import com.github.sasd97.lib_router.commands.fragments.FragmentCommand;
+import com.github.sasd97.lib_router.exceptions.CommandNotSupportedException;
 
 /**
  * Created by alexander on 06/09/2017.
@@ -24,7 +25,8 @@ public final class FragmentSatellite implements Satellite {
 
     @Override
     public void execute(@NonNull Command command) {
-        if (!(command instanceof FragmentCommand)) return;
+        if (!(command instanceof FragmentCommand))
+            throw new CommandNotSupportedException("Fragment Commands");
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction = ((FragmentCommand) command).apply(containerId, transaction);

@@ -7,6 +7,7 @@ import java.lang.ref.WeakReference;
 
 import com.github.sasd97.lib_router.commands.Command;
 import com.github.sasd97.lib_router.commands.activities.ActivityCommand;
+import com.github.sasd97.lib_router.exceptions.CommandNotSupportedException;
 
 /**
  * Created by alexander on 06/09/2017.
@@ -22,6 +23,9 @@ public final class ActivitySatellite implements Satellite {
 
     @Override
     public void execute(@NonNull Command command) {
+        if (!(command instanceof ActivityCommand))
+            throw new CommandNotSupportedException("Activity Commands");
+
         Activity activity = activityReference.get();
         if (activity == null) return;
         ((ActivityCommand) command).apply(activity);
