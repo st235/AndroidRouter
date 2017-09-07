@@ -6,7 +6,7 @@
 
 ### Gradle
 ```
-compile 'com.github.sasd97:android-router:0.0.2'
+compile 'com.github.sasd97:android-router:0.0.3'
 ```
 
 ### Maven
@@ -14,7 +14,7 @@ compile 'com.github.sasd97:android-router:0.0.2'
 <dependency>
   <groupId>com.github.sasd97</groupId>
   <artifactId>android-router</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <type>pom</type>
 </dependency>
 ```
@@ -39,50 +39,56 @@ First of all, you need to attach **satellite** to **router**.
 
 ```java
     private Router router = new BaseRouter();
-    private Satellite satellite = new ActivitySatellite(this);
+    private Satellite satellite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        satellite = new ActivitySatellite(this);
         router.attachSatellite(satellite);
     }
 ```
 
 ### Available activity commands
-- Start
-- StartForResult
-- Finish
-- With
-- And _(Sugar :candy:)_
+- start
+- startForResult
+- finish
+- with
+- and _(Sugar :candy:)_
 
 ```java
-router.pushCommand(new Start(SecondaryActivity.class));
+router.pushCommand(start(SecondaryActivity.class));
 ```
 
 ```java
-router.pushCommand(new FinishThis(new And(new Start(SecondaryActivity.class))));
+router.pushCommand(finishThis(and(start(SecondaryActivity.class))));
 ```
 
 ```java
 Bundle args = new Bundle();
 args.putInt("args", 1);
-router.pushCommand(new Start(SecondaryActivity.class, new With(args)));
+router.pushCommand(start(SecondaryActivity.class, with(args)));
 ```
 
 
 ### Available fragments commands
-- AddToBackStack
-- And _(Sugar :candy:)_
-- Replace
-- Add
-- WithAnimation
+- addToBackStack
+- and _(Sugar :candy:)_
+- replace
+- add
+- animate
 
 ```java
-router.pushCommand(
-            new Replace(new FirstFragment(), "tag", new And(new AddToBackStack(null)))
-    );
+router.pushCommand(replace(new FirstFragment(), null, and(addToBackStack(null))));
+```
+
+### System messages show
+- showToast
+
+```java
+router.pushCommand(showToast(Toast.LENGTH_SHORT, "Hello world!"));
 ```
 
 _Note: You can find all usage examples in app folder._
