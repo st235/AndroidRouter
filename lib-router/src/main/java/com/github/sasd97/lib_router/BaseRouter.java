@@ -3,6 +3,7 @@ package com.github.sasd97.lib_router;
 import android.support.annotation.NonNull;
 
 import com.github.sasd97.lib_router.commands.Command;
+import com.github.sasd97.lib_router.exceptions.SatelliteNotAttachedException;
 import com.github.sasd97.lib_router.satellites.Satellite;
 
 /**
@@ -15,6 +16,7 @@ public class BaseRouter implements Router {
 
     @Override
     public void pushCommand(@NonNull Command command) {
+        if (satellite == null) throw new SatelliteNotAttachedException();
         satellite.execute(command);
     }
 

@@ -11,10 +11,10 @@ import com.github.sasd97.lib_router.commands.CommandDecorator;
 
 public abstract class FragmentCommand extends CommandDecorator<FragmentCommand> {
 
-    public FragmentCommand() {
+    protected FragmentCommand() {
     }
 
-    public FragmentCommand(@NonNull FragmentCommand command) {
+    protected FragmentCommand(@NonNull FragmentCommand command) {
         super(command);
     }
 

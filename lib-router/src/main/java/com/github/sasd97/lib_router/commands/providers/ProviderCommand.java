@@ -11,10 +11,10 @@ import com.github.sasd97.lib_router.commands.CommandDecorator;
 
 public abstract class ProviderCommand<T> extends CommandDecorator<ProviderCommand<T>> {
 
-    public ProviderCommand() {
+    protected ProviderCommand() {
     }
 
-    public ProviderCommand(@NonNull ProviderCommand<T> command) {
+    protected ProviderCommand(@NonNull ProviderCommand<T> command) {
         super(command);
     }
 

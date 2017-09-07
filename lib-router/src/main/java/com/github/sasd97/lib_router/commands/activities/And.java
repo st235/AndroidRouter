@@ -9,8 +9,12 @@ import android.support.annotation.NonNull;
 
 public final class And extends ActivityCommand {
 
-    public And(@NonNull ActivityCommand command) {
+    private And(@NonNull ActivityCommand command) {
         super(command);
+    }
+
+    public static And and(@NonNull ActivityCommand command) {
+        return new And(command);
     }
 
     @Override

@@ -17,10 +17,16 @@ import com.github.sasd97.lib_router.commands.fragments.WithCustomAnimation;
 import com.github.sasd97.lib_router.satellites.FragmentSatellite;
 import com.github.sasd97.lib_router.satellites.Satellite;
 
+import static com.github.sasd97.lib_router.commands.fragments.AddToBackStack.addToBackStack;
+import static com.github.sasd97.lib_router.commands.fragments.And.and;
+import static com.github.sasd97.lib_router.commands.fragments.Replace.replace;
+import static com.github.sasd97.lib_router.commands.fragments.WithCustomAnimation.animate;
+import static com.github.sasd97.lib_router.commands.messages.ShowToast.showToast;
+
 public class SecondaryActivity extends AppCompatActivity {
 
     private Router router = new BaseRouter();
-    private Satellite satellite = new FragmentSatellite(R.id.fragmentContainer, getSupportFragmentManager());
+    private Satellite satellite;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -29,18 +35,14 @@ public class SecondaryActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    router.pushCommand(
-                            new Replace(new FirstFragment(), null, new And(new AddToBackStack(null)))
-                    );
+                    router.pushCommand(replace(new FirstFragment(), null, and(addToBackStack(null))));
                     return true;
                 case R.id.navigation_dashboard:
-                    router.pushCommand(
-                            new Replace(new SecondFragment(), "tag")
-                    );
+                    router.pushCommand(replace(new SecondFragment(), "tag"));
                     return true;
                 case R.id.navigation_notifications:
                     router.pushCommand(
-                            new WithCustomAnimation(R.anim.slide_in, R.anim.slide_out, new Replace(new ThirdFragment(), null))
+                            animate(R.anim.slide_in, R.anim.slide_out, replace(new ThirdFragment(), null))
                     );
                     return true;
             }
@@ -54,16 +56,18 @@ public class SecondaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secondary);
 
+        satellite = new FragmentSatellite(R.id.fragmentContainer,
+                getApplicationContext(), getSupportFragmentManager());
         router.attachSatellite(satellite);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Intent intent = getIntent();
         Bundle args = intent.getExtras();
 
         if (args != null && args.containsKey("args")) {
-            Toast.makeText(this, String.valueOf(args.getInt("args")), Toast.LENGTH_LONG).show();
+            router.pushCommand(showToast(Toast.LENGTH_SHORT, String.valueOf(args.getInt("args"))));
         }
     }
 }

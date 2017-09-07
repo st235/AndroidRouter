@@ -9,8 +9,12 @@ import android.support.v4.app.FragmentTransaction;
 
 public class And extends FragmentCommand {
 
-    public And(@NonNull FragmentCommand command) {
+    private And(@NonNull FragmentCommand command) {
         super(command);
+    }
+
+    public static And and(@NonNull FragmentCommand command) {
+        return new And(command);
     }
 
     @Override

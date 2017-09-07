@@ -14,12 +14,18 @@ public class WithCustomAnimation extends FragmentCommand {
     private int startAnimation;
     private int endAnimation;
 
-    public WithCustomAnimation(@AnimatorRes @AnimRes int startAnimation,
-                               @AnimatorRes @AnimRes int endAnimation,
-                               @NonNull FragmentCommand command) {
+    private WithCustomAnimation(@AnimatorRes @AnimRes int startAnimation,
+                                @AnimatorRes @AnimRes int endAnimation,
+                                @NonNull FragmentCommand command) {
         super(command);
         this.startAnimation = startAnimation;
         this.endAnimation = endAnimation;
+    }
+
+    public static WithCustomAnimation animate(@AnimatorRes @AnimRes int startAnimation,
+                                              @AnimatorRes @AnimRes int endAnimation,
+                                              @NonNull FragmentCommand command) {
+        return new WithCustomAnimation(startAnimation, endAnimation, command);
     }
 
     @Override

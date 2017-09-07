@@ -12,14 +12,23 @@ public class Add extends FragmentCommand {
 
     private Fragment to;
 
-    public Add(@NonNull Fragment to) {
+    private Add(@NonNull Fragment to) {
         this.to = to;
     }
 
-    public Add(@NonNull Fragment to,
-               @NonNull FragmentCommand command) {
+    private Add(@NonNull Fragment to,
+                @NonNull FragmentCommand command) {
         super(command);
         this.to = to;
+    }
+
+    public static Add add(@NonNull Fragment to) {
+        return new Add(to);
+    }
+
+    public static Add add(@NonNull Fragment to,
+                          @NonNull FragmentCommand command) {
+        return new Add(to, command);
     }
 
     @Override
