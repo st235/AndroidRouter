@@ -1,6 +1,6 @@
 # Android Router
 
- [ ![Download](https://api.bintray.com/packages/st235/android-router/android-router/images/download.svg?version=0.0.2) ](https://bintray.com/st235/android-router/android-router/0.0.2/link)
+[ ![Download](https://api.bintray.com/packages/st235/android-router/android-router/images/download.svg) ](https://bintray.com/st235/android-router/android-router/_latestVersion)
 
 ## Installation
 
