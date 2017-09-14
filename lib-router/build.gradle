@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.github.sasd97'
     PUBLISH_ARTIFACT_ID = 'android-router'
-    PUBLISH_VERSION = '0.0.4'
+    PUBLISH_VERSION = '0.0.5'
 }
 
 android {
@@ -13,8 +13,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 22
-        versionName "0.0.4"
+        versionCode 23
+        versionName "0.0.5"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
