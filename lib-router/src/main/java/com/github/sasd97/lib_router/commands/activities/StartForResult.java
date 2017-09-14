@@ -34,8 +34,10 @@ public final class StartForResult extends ActivityCommand {
         this.requestCode = requestCode;
     }
 
-    private StartForResult(@NonNull Intent intent) {
+    private StartForResult(@NonNull Intent intent,
+                           int requestCode) {
         this.wrappedIntent = intent;
+        this.requestCode = requestCode;
     }
 
     public static StartForResult startForResult(@NonNull Class<?> to,
@@ -49,8 +51,9 @@ public final class StartForResult extends ActivityCommand {
         return new StartForResult(to, requestCode, command);
     }
 
-    public static StartForResult startForResult(@NonNull Intent wrapped) {
-        return new StartForResult(wrapped);
+    public static StartForResult startForResult(@NonNull Intent wrapped,
+                                                int requestCode) {
+        return new StartForResult(wrapped, requestCode);
     }
 
     @Override

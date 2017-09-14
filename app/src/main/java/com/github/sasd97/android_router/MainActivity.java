@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                router.pushCommand(startForResult(openGallery));
+                router.pushCommand(startForResult(openGallery, 1));
             }
         });
     }

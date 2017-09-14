@@ -6,7 +6,7 @@
 
 ### Gradle
 ```
-compile 'com.github.sasd97:android-router:0.0.4'
+compile 'com.github.sasd97:android-router:0.0.5'
 ```
 
 ### Maven
@@ -14,7 +14,7 @@ compile 'com.github.sasd97:android-router:0.0.4'
 <dependency>
   <groupId>com.github.sasd97</groupId>
   <artifactId>android-router</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <type>pom</type>
 </dependency>
 ```
