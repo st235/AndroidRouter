@@ -30,4 +30,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Show message"/>
+
+    <Button
+        android:id="@+id/openGallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open gallery"/>
 </LinearLayout>

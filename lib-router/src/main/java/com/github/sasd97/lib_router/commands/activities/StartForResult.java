@@ -3,6 +3,7 @@ package com.github.sasd97.lib_router.commands.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
@@ -16,6 +17,7 @@ public final class StartForResult extends ActivityCommand {
 
     private Class<?> to;
     private int requestCode;
+    private Intent wrappedIntent;
     private ProviderCommand<Bundle> command;
 
     private StartForResult(@NonNull Class<?> to,
@@ -32,6 +34,10 @@ public final class StartForResult extends ActivityCommand {
         this.requestCode = requestCode;
     }
 
+    private StartForResult(@NonNull Intent intent) {
+        this.wrappedIntent = intent;
+    }
+
     public static StartForResult startForResult(@NonNull Class<?> to,
                                                 int requestCode) {
         return new StartForResult(to, requestCode);
@@ -43,9 +49,14 @@ public final class StartForResult extends ActivityCommand {
         return new StartForResult(to, requestCode, command);
     }
 
+    public static StartForResult startForResult(@NonNull Intent wrapped) {
+        return new StartForResult(wrapped);
+    }
+
     @Override
     public void apply(@NonNull Activity activity) {
-        Intent startIntent = new Intent(activity, to);
+         Intent startIntent = wrappedIntent != null ?
+                 new Intent(wrappedIntent) : new Intent(activity, to);
         if (command != null) startIntent.putExtras(command.getContent(null));
         activity.startActivityForResult(startIntent, requestCode);
     }

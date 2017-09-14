@@ -1,5 +1,7 @@
 package com.github.sasd97.android_router;
 
+import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +15,14 @@ import com.github.sasd97.lib_router.satellites.Satellite;
 import static com.github.sasd97.lib_router.commands.activities.And.and;
 import static com.github.sasd97.lib_router.commands.activities.FinishThis.finishThis;
 import static com.github.sasd97.lib_router.commands.activities.Start.start;
+import static com.github.sasd97.lib_router.commands.activities.StartForResult.startForResult;
 import static com.github.sasd97.lib_router.commands.messages.ShowToast.showToast;
 import static com.github.sasd97.lib_router.commands.providers.With.with;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Router router = new BaseRouter();
     private Satellite satellite;
+    private Router router = new BaseRouter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 router.pushCommand(showToast(Toast.LENGTH_SHORT, "Hello world!"));
+            }
+        });
+
+        findViewById(R.id.openGallery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                router.pushCommand(startForResult(openGallery));
             }
         });
     }
