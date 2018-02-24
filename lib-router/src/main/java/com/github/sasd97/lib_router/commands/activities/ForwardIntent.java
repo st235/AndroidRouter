@@ -16,12 +16,12 @@ public final class ForwardIntent extends ActivityCommand {
         this.intent = intent;
     }
 
-    public ForwardIntent forwardIntent(@NonNull Intent intent) {
+    public static ForwardIntent forwardIntent(@NonNull Intent intent) {
         return new ForwardIntent(intent);
     }
 
     @Override
     public void apply(@NonNull Activity activity) {
-        activity.setIntent(intent);
+        activity.startActivity(intent);
     }
 }

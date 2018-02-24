@@ -1,6 +1,7 @@
 package com.github.sasd97.android_router;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.github.sasd97.lib_router.satellites.ActivitySatellite;
 import com.github.sasd97.lib_router.satellites.Satellite;
 
 import static com.github.sasd97.lib_router.commands.activities.And.and;
+import static com.github.sasd97.lib_router.commands.activities.ForwardIntent.forwardIntent;
 import static com.github.sasd97.lib_router.commands.activities.FinishThis.finishThis;
 import static com.github.sasd97.lib_router.commands.activities.Start.start;
 import static com.github.sasd97.lib_router.commands.activities.StartForResult.startForResult;
@@ -67,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 router.pushCommand(startForResult(openGallery, 1));
+            }
+        });
+
+        findViewById(R.id.sendEmail).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mail = new Intent(Intent.ACTION_SENDTO);
+                mail.setData(Uri.parse("mailto:example@google.com?s=hello"));
+                router.pushCommand(forwardIntent(Intent.createChooser(mail, "Choose email app")));
             }
         });
     }

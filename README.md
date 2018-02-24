@@ -6,7 +6,7 @@
 
 ### Gradle
 ```
-compile 'com.github.sasd97:android-router:0.0.5'
+compile 'com.github.sasd97:android-router:0.0.7'
 ```
 
 ### Maven
@@ -14,7 +14,7 @@ compile 'com.github.sasd97:android-router:0.0.5'
 <dependency>
   <groupId>com.github.sasd97</groupId>
   <artifactId>android-router</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.7</version>
   <type>pom</type>
 </dependency>
 ```
@@ -54,6 +54,7 @@ First of all, you need to attach **satellite** to **router**.
 ### Available activity commands
 - start
 - startForResult
+- forwardIntent
 - finish
 - with
 - and _(Sugar :candy:)_
