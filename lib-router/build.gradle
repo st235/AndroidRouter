@@ -14,32 +14,25 @@ publish {
     userOrg = 'st235'
     groupId = 'com.github.st235'
     artifactId = 'android-router'
-    publishVersion = '0.0.7'
+    publishVersion = '0.0.8'
     desc = 'Simple way to make navigation in Android Application.'
     website = 'https://github.com/st235/android-router'
 }
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 25
-        versionName "0.0.7"
+        versionCode 26
+        versionName "0.1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
 }

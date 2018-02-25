@@ -1,3 +1,6 @@
+// Copyright (c) 2018 by Alexander Dadukin (st235@yandex.ru)
+// All rights reserved.
+
 package com.github.sasd97.lib_router.commands.providers;
 
 import android.os.Bundle;
@@ -5,12 +8,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
- * Created by alexander on 06/09/2017.
+ * Packs bundle data.
  */
-
 public final class With extends ProviderCommand<Bundle> {
 
-    protected Bundle bundle;
+    @Nullable
+    private final Bundle bundle;
 
     private With(@NonNull Bundle bundle) {
         this.bundle = bundle;
@@ -18,6 +21,7 @@ public final class With extends ProviderCommand<Bundle> {
 
     private With(@NonNull ProviderCommand<Bundle> command) {
         super(command);
+        bundle = null;
     }
 
     public static With with(@NonNull Bundle bundle) {

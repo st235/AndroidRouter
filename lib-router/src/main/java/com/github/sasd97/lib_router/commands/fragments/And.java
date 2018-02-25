@@ -1,11 +1,10 @@
+// Copyright (c) 2018 by Alexander Dadukin (st235@yandex.ru)
+// All rights reserved.s
+
 package com.github.sasd97.lib_router.commands.fragments;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
-
-/**
- * Created by alexander on 06/09/2017.
- */
 
 public class And extends FragmentCommand {
 

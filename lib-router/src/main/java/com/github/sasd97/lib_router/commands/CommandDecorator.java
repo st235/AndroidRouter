@@ -1,16 +1,19 @@
+// Copyright (c) 2018 by Alexander Dadukin (st235@yandex.ru)
+// All rights reserved.
+
 package com.github.sasd97.lib_router.commands;
 
 import android.support.annotation.NonNull;
 
 /**
- * Created by alexander on 06/09/2017.
+ * {@see Command} wrapper. Helps chain commands.
+ * @param <T> command group.
  */
-
 public abstract class CommandDecorator<T extends Command> implements Command {
 
     protected T command;
 
-    public CommandDecorator() {
+    protected CommandDecorator() {
     }
 
     public CommandDecorator(@NonNull T command) {

@@ -1,12 +1,11 @@
+// Copyright (c) 2018 by Alexander Dadukin (st235@yandex.ru)
+// All rights reserved.
+
 package com.github.sasd97.lib_router.commands.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-
-/**
- * Created by alexanderdadukin on 24.02.2018.
- */
 
 public final class ForwardIntent extends ActivityCommand {
 

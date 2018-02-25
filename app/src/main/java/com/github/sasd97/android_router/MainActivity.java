@@ -12,6 +12,7 @@ import com.github.sasd97.lib_router.BaseRouter;
 import com.github.sasd97.lib_router.Router;
 import com.github.sasd97.lib_router.satellites.ActivitySatellite;
 import com.github.sasd97.lib_router.satellites.Satellite;
+import com.github.sasd97.lib_router.satellites.ToastSatellite;
 
 import static com.github.sasd97.lib_router.commands.activities.And.and;
 import static com.github.sasd97.lib_router.commands.activities.ForwardIntent.forwardIntent;
@@ -23,7 +24,6 @@ import static com.github.sasd97.lib_router.commands.providers.With.with;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Satellite satellite;
     private Router router = new BaseRouter();
 
     @Override
@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        satellite = new ActivitySatellite(this);
-        router.attachSatellite(satellite);
+        router.addSatellite(new ActivitySatellite(this));
+        router.addSatellite(new ToastSatellite(this));
 
         findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
             @Override
