@@ -1,15 +1,16 @@
+// Copyright (c) 2018 by Alexander Dadukin (st235@yandex.ru)
+// All rights reserved.
+
 package com.github.sasd97.lib_router.commands.messages;
 
 import android.support.annotation.NonNull;
 
-/**
- * Created by alexander on 07/09/2017.
- */
-
 public class ShowToast extends MessageCommand {
 
-    private int duration;
-    private String text;
+    private final int duration;
+
+    @NonNull
+    private final String text;
 
     private ShowToast(int duration,
                       @NonNull String text) {
@@ -22,6 +23,7 @@ public class ShowToast extends MessageCommand {
         return new ShowToast(duration, text);
     }
 
+    @NonNull
     @Override
     public Message getMessage() {
         Message message = new Message();

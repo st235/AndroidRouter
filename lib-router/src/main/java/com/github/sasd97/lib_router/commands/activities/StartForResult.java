@@ -1,3 +1,5 @@
+// Copyright (c) 2018 by Alexander Dadukin (st235@yandex.ru)
+// All rights reserved.
 
 package com.github.sasd97.lib_router.commands.activities;
 
@@ -8,10 +10,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.github.sasd97.lib_router.commands.providers.ProviderCommand;
-
-/**
- * Created by alexander on 06/09/2017.
- */
 
 public final class StartForResult extends ActivityCommand {
 

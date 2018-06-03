@@ -6,7 +6,7 @@
 
 ### Gradle
 ```
-compile 'com.github.st235:android-router:0.0.7'
+implementation 'com.github.st235:android-router:0.1.0'
 ```
 
 ### Maven
@@ -14,7 +14,7 @@ compile 'com.github.st235:android-router:0.0.7'
 <dependency>
   <groupId>com.github.st235</groupId>
   <artifactId>android-router</artifactId>
-  <version>0.0.7</version>
+  <version>0.1.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -47,7 +47,7 @@ First of all, you need to attach **satellite** to **router**.
         setContentView(R.layout.activity_main);
 
         satellite = new ActivitySatellite(this);
-        router.attachSatellite(satellite);
+        router.addSatellite(satellite);
     }
 ```
 
@@ -129,7 +129,24 @@ Satellite interface
 
 ```java
 public interface Satellite {
+    /**
+     * Get current satellite type.
+     * @return unique id for satellite group (for example, activity group).
+     */
+    int getType();
+
+    /**
+     * Execute passed command by satellite.
+     * @param command or command chain which contains navigation info.
+     */
     void execute(@NonNull Command command);
+
+    /**
+     * Checks whether satellite can handle command or not.
+     * @param command or command chain which contains navigation info.
+     * @return true if satellite can handle command else otherwise.
+     */
+    boolean isApplicable(@NonNull Command command);
 }
 ```
 
@@ -150,7 +167,9 @@ public class BaseRouter implements Router {
 ```java
 public interface Router {
     void pushCommand(@NonNull Command command);
-    void attachSatellite(@NonNull Satellite satellite);
+
+    void addSatellite(@NonNull Satellite satellite);
+    void removeSatellite(@NonNull Satellite satellite);
 }
 ```
 
@@ -158,7 +177,7 @@ public interface Router {
 
 MIT License
 
-Copyright (c) 2017 Alexander Dadukin
+Copyright (c) 2017-present Alexander Dadukin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

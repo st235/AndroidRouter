@@ -10,12 +10,9 @@ import android.widget.Toast;
 
 import com.github.sasd97.lib_router.BaseRouter;
 import com.github.sasd97.lib_router.Router;
-import com.github.sasd97.lib_router.commands.fragments.AddToBackStack;
-import com.github.sasd97.lib_router.commands.fragments.And;
-import com.github.sasd97.lib_router.commands.fragments.Replace;
-import com.github.sasd97.lib_router.commands.fragments.WithCustomAnimation;
 import com.github.sasd97.lib_router.satellites.FragmentSatellite;
 import com.github.sasd97.lib_router.satellites.Satellite;
+import com.github.sasd97.lib_router.satellites.ToastSatellite;
 
 import static com.github.sasd97.lib_router.commands.fragments.AddToBackStack.addToBackStack;
 import static com.github.sasd97.lib_router.commands.fragments.And.and;
@@ -56,9 +53,9 @@ public class SecondaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secondary);
 
-        satellite = new FragmentSatellite(R.id.fragmentContainer,
-                getApplicationContext(), getSupportFragmentManager());
-        router.attachSatellite(satellite);
+        satellite = new FragmentSatellite(R.id.fragmentContainer, getSupportFragmentManager());
+        router.addSatellite(satellite);
+        router.addSatellite(new ToastSatellite(this));
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
