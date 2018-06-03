@@ -6,7 +6,7 @@ package com.github.sasd97.lib_router.commands;
 import android.support.annotation.NonNull;
 
 /**
- * {@see Command} wrapper. Helps chain commands.
+ * {@link Command} wrapper. Helps chain commands.
  * @param <T> command group.
  */
 public abstract class CommandDecorator<T extends Command> implements Command {

@@ -14,7 +14,7 @@ publish {
     userOrg = 'st235'
     groupId = 'com.github.st235'
     artifactId = 'android-router'
-    publishVersion = '0.0.8'
+    publishVersion = '0.1.0'
     desc = 'Simple way to make navigation in Android Application.'
     website = 'https://github.com/st235/android-router'
 }
