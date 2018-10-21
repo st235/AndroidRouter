@@ -9,8 +9,16 @@ import android.support.annotation.NonNull;
 
 public final class FinishThis extends ActivityCommand {
 
+    private FinishThis() {
+        super();
+    }
+
     private FinishThis(@NonNull ActivityCommand command) {
         super(command);
+    }
+
+    public static FinishThis finishThis() {
+        return new FinishThis();
     }
 
     public static FinishThis finishThis(@NonNull ActivityCommand command) {
@@ -19,7 +27,7 @@ public final class FinishThis extends ActivityCommand {
 
     @Override
     public void apply(@NonNull Activity activity) {
-        command.apply(activity);
+        if (command != null) command.apply(activity);
         activity.finish();
     }
 }
